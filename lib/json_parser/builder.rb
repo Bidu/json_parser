@@ -1,6 +1,13 @@
-class JsonParser::ClassMethods::Builder < ConcernBuilder
+class JsonParser::Builder < Sinclair
 
+  attr_reader :attr_names
   delegate :path, :cached, :compact, :type, :after, to: :options_object
+
+  def initialize(attr_names, clazz, options)
+    @attr_names = attr_names
+    super(clazz, options)
+    init
+  end
 
   private
 
@@ -18,7 +25,7 @@ class JsonParser::ClassMethods::Builder < ConcernBuilder
     options[:full_path] || [path, attribute].compact.join('.')
   end
 
-  def clazz
+  def wrapper_clazz
     options[:class]
   end
 
@@ -28,17 +35,13 @@ class JsonParser::ClassMethods::Builder < ConcernBuilder
 
   def fetcher_options
     options.slice(:compact, :after, :type, :flatten).merge({
-      clazz: clazz,
+      clazz: wrapper_clazz,
       case_type: case_type
     })
   end
 
   def add_attr(attribute)
-    @methods_def << <<-CODE
-      def #{attribute}
-        #{cached ? cached_fetcher(attribute) : attr_fetcher(attribute)}
-      end
-    CODE
+    add_method attribute, "#{cached ? cached_fetcher(attribute) : attr_fetcher(attribute)}"
   end
 
   def attr_fetcher(attribute)
