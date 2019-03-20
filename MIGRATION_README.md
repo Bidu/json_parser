@@ -44,6 +44,22 @@ class MyModel
   expose :id, :dog_name, cached: true
 ```
 
+also, port all your customization from `JsonParser::TypeCast` to `Arstotzka::TypeCast`
+
+```ruby
+module JsonParser::TypeCast
+  def to_my_type(value)
+    # code here
+  end
+end
+
+module Arstotzka::TypeCast
+  def to_my_type(value)
+    # same code here
+  end
+end
+```
+
 Clen up
 --------
 finally, remove `json_parser` ... for good :D
