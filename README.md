@@ -11,7 +11,7 @@ Json Parser is also usefull when you need keys case changed or data type cast
 
 Deprecation
 -----------
-This project has been migrated to [Arstotzka](https://github.com/darthjee/arstotzka/tree/1.2.0)
+This project has been migrated to [Arstotzka](https://github.com/darthjee/arstotzka/tree/1.2.2)
 
 migrating can be done by following [migration readme](https://github.com/Bidu/json_parser/blob/master/MIGRATION_README.md)
 
