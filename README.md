@@ -1,4 +1,4 @@
-Json Parser
+:no_entry: Json Parser :no_entry: (DEPRECATED)
 ========
 
 This project allows for a quick hash / json data fetching in order to avoid code
@@ -8,6 +8,12 @@ also, this concern, like openstruct, allow the json to be manipulated as an obje
 avoids method missing by aways having the declarated methods, even if that means nil return
 
 Json Parser is also usefull when you need keys case changed or data type cast
+
+Deprecation
+-----------
+This project has been migrated to [Arstotzka](https://github.com/darthjee/arstotzka/tree/1.2.3)
+
+migrating can be done by following [migration readme](https://github.com/Bidu/json_parser/blob/master/MIGRATION_README.md)
 
 Getting started
 ---------------
